@@ -34,9 +34,9 @@ function createBoxes(amount) {
   }
 }
 
-function destroyBoxes(amount) {
-  for (let i = 0; i < amount; i++) {
-    boxesWrap.querySelector('.box-item').remove();
+function destroyBoxes() {
+  boxesWrap.querySelectorAll('.box-item').forEach(box => {
+    box.remove();
     sizeBox = 30;
-  }
+  })
 }

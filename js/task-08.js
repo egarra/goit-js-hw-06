@@ -1,51 +1,53 @@
 const loginForm = document.querySelector('.login-form');
-      /* loginInputs = loginForm.querySelectorAll('input'); */
 
-let userInfo = {};
-
-loginForm.addEventListener('submit', onFormSubmit);
-
-function onFormSubmit (e) {
-     e.preventDefault();
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
         
-        const loginInputs = e.currentTarget.elements,
-              userName = loginInputs.email.value,
-              userPassword = loginInputs.password.value;
-        console.log(loginInputs)
-        for (const input of loginInputs) {
-            if (input.nodeName === 'INPUT' && userName === '' && userPassword === '' ) {
+        const formElements = e.currentTarget.elements,
+              userName = formElements.email.value,
+              userPassword = formElements.password.value;
+
+        const userInfo = {}
+        
+            if (userName === '' || userPassword === '' ) {
                 alert('Fill every input, please');
-                break;
-            } 
-            if (userName !== '' && userPassword !== '') {
-                userInfo[input.name] = input.value;
+            } else {
+                userInfo.name = userName;
+                userInfo.password = userPassword;
                 console.log(userInfo);
-                loginForm.reset();
+                loginForm.reset();                
             }
-            
-        }
     }
+);
+
+     
 
 /* 2nd VARIANT */
-/* 
-const loginForm = document.querySelector('.login-form'),
-      loginElems = document.querySelector('.login-form').elements;
 
-let userInfo = {};
+/* const loginForm = document.querySelector('.login-form');
+
+const userInfo = {};
     
 loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    const formElements = e.currentTarget.elements,
+          userName = formElements.email.value,
+          userPassword = formElements.password.value;
     
-    for (let i = 0; i < loginElems.length; i++) {
-        if (loginElems[i].nodeName === 'INPUT' && loginElems[i].value === '') {
+    for (const input of formElements) {
+        if (userName === '' || userPassword === '' ) {
             alert('Fill every input, please');
             break;
-        } if (loginElems[i].nodeName === 'INPUT' && loginElems[i].value !== '') {
-            userInfo[loginElems[i].name] = loginElems[i].value;
-            loginForm.reset();
-            console.log(userInfo);
+        }
+        if (input.nodeName === 'INPUT') {
+            userInfo[input.name] = input.value;      
         }
         
     }
-   
+
+    if (userName !== '' && userPassword !== '' ) {
+        console.log(userInfo);
+        loginForm.reset();
+    }
 }) */
