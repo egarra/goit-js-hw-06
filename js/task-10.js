@@ -37,7 +37,6 @@ function createBoxes(amount) {
 function destroyBoxes(amount) {
   for (let i = 0; i < amount; i++) {
     boxesWrap.querySelector('.box-item').remove();
-    controlInput.value = '';
     sizeBox = 30;
   }
 }
